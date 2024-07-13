@@ -1,4 +1,5 @@
-const reservationModel = require('../models/reservation');
+const Reservation = require('../models/reservation');
+const reservationModel = new Reservation();
 
 // Controlador para obtener todas las reservas
 const getAllReservations = (req, res) => {
@@ -10,9 +11,14 @@ const getAllReservations = (req, res) => {
 const createReservation = (req, res) => {
   const newReservation = {
     id: reservationModel.getAllReservations().length + 1,
+    arrivalDate: req.body.arrivalDate,
+    departureDate: req.body.departureDate,
+    nameHotel: req.body.nameHotel,
+    typeRoom: req.body.typeRoom,
+    passengers: req.body.passengers,
     name: req.body.name,
-    checkIn: req.body.checkIn,
-    checkOut: req.body.checkOut
+    mail: req.body.mail,
+    paymentStatus: req.body.paymentStatus
   };
   const createdReservation = reservationModel.createReservation(newReservation);
   res.status(201).json(createdReservation);
@@ -30,9 +36,14 @@ const getReservationById = (req, res) => {
 // Controlador para actualizar una reserva por su ID
 const updateReservation = (req, res) => {
   const updatedReservation = {
+    arrivalDate: req.body.arrivalDate,
+    departureDate: req.body.departureDate,
+    nameHotel: req.body.nameHotel,
+    typeRoom: req.body.typeRoom,
+    passengers: req.body.passengers,
     name: req.body.name,
-    checkIn: req.body.checkIn,
-    checkOut: req.body.checkOut
+    mail: req.body.mail,
+    paymentStatus: req.body.paymentStatus
   };
   const reservation = reservationModel.updateReservation(parseInt(req.params.id), updatedReservation);
   if (!reservation) {
