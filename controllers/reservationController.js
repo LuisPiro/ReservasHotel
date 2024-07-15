@@ -1,4 +1,4 @@
-const Reservation = require('../models/reservation');
+const Reservation = require('../models/Reservation');
 const reservationModel = new Reservation();
 
 // Controlador para obtener todas las reservas
@@ -21,7 +21,10 @@ const createReservation = (req, res) => {
     paymentStatus: req.body.paymentStatus
   };
   const createdReservation = reservationModel.createReservation(newReservation);
-  res.status(201).json(createdReservation);
+  res.status(201).json({
+    message: 'Reservation created successfully',
+    reservation: createdReservation
+  });
 };
 
 // Controlador para obtener una reserva por su ID
@@ -49,7 +52,10 @@ const updateReservation = (req, res) => {
   if (!reservation) {
     return res.status(404).json({ message: 'Reservation not found' });
   }
-  res.json(reservation);
+  res.json({
+    message: 'Reservation updated successfully',
+    reservation
+  });
 };
 
 // Controlador para eliminar una reserva por su ID
@@ -58,7 +64,7 @@ const deleteReservation = (req, res) => {
   if (!reservation) {
     return res.status(404).json({ message: 'Reservation not found' });
   }
-  res.status(204).send();
+  res.status(204).json({ message: 'Reservation deleted successfully' });
 };
 
 module.exports = {

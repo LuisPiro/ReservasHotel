@@ -1,6 +1,18 @@
 class Reservation {
     constructor() {
-      this.reservations = [];
+      this.reservations = [
+        {
+          id: 1,
+          arrivalDate: "2024-06-16",
+          departureDate: "2024-06-20",
+          nameHotel: "Hotel Templarios",
+          typeRoom: "Double",
+          passengers: 2,
+          name: "John Doe",
+          mail: "john.doe@example.com",
+          paymentStatus: "Paid"
+        }
+      ];
     }
   
     getAllReservations() {

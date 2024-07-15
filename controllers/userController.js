@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const userModel = new User();
 
 // Controlador para obtener todos los usuarios
@@ -16,7 +16,10 @@ const createUser = (req, res) => {
     password: req.body.password
   };
   const createdUser = userModel.createUser(newUser);
-  res.status(201).json(createdUser);
+  res.status(201).json({
+    message: 'User created successfully',
+    user: createdUser
+  });
 };
 
 // Controlador para obtener un usuario por su ID
@@ -39,7 +42,10 @@ const updateUser = (req, res) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  res.json(user);
+  res.json({
+    message: 'User updated successfully',
+    user
+  });
 };
 
 // Controlador para eliminar un usuario por su ID
@@ -48,7 +54,7 @@ const deleteUser = (req, res) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  res.status(204).send();
+  res.status(204).json({ message: 'User deleted successfully' });
 };
 
 module.exports = {
