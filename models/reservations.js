@@ -56,6 +56,7 @@ class Reservation {
 
 const reservations = [];
 
+// Reserva de ejemplo
 const exampleReservation = new Reservation(
   1,
   "2024-06-16",

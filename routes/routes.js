@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const reservationRoutes = require('../routes/reservations');
+const reservationRoutes = require('./reservations');
 
 router.use('/reservations', reservationRoutes);
 
