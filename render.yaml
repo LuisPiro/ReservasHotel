@@ -1,13 +1,15 @@
 services:
-  - type: web
-    name: hotel-reservation-api
-    runtime: node
-    region: oregon
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start nodemon
-    envVars:
-      - key: PORT
-        value: 3000
-      - key: URL_BASE
-        value: /api
+- type: web
+  name: hotel-reservation-api
+  runtime: node
+  repo: https://github.com/LuisPiro/ReservasHotel
+  plan: free
+  envVars:
+  - key: URL_BASE
+    sync: false
+  - key: PORT
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: npm start nodemon
+version: "1"
