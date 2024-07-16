@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+
+# Build directories
+dist/
+build/
+
+# Swagger UI files
+.swagger/
+
+# Ignore documentation files
+docs/api-docs.yaml
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# IDE specific files
+.vscode/
+.idea/
+
+# MacOS folder attributes
+.DS_Store
+
+# Windows folder attributes
+Thumbs.db
+
+# Vim temporary files
+*.swp
