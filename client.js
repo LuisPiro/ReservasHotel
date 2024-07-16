@@ -1,11 +1,4 @@
 const axios = require('./index');
-const cors = require('./index');
-
-app.use(cors({
-  origin: 'http://localhost:3000', // Permitir solo desde localhost:3000
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir metodos utilizados en el proyecto
-  allowedHeaders: ['Content-Type'], // Permitir solo el header Content-Type
-}));
 
 const apiBaseUrl = 'https://reservashotel-nul0.onrender.com/';
 
