@@ -3,7 +3,7 @@ const router = express.Router();
 const Reservation = require('../models/reservations');
 
 // Obtener todas las reservas
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   res.json(Reservation.getAll());
 });
 

@@ -19,7 +19,7 @@ const corsOptions = {
 // Configurar CORS
 app.use(cors(corsOptions));
 
-// Middleware para parsear JSON
+// Middleware
 app.use(express.json());
 
 // Configurar Swagger
