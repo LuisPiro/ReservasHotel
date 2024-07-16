@@ -37,12 +37,13 @@ El servidor estará disponible en http://localhost:3000
 
 Puedes acceder a la documentación de la API en http://localhost:3000/api-docs.
 
-Despliegue en Render
+## Despliegue en Render
+
 Este proyecto está configurado para ser desplegado en Render. Asegúrate de configurar las variables de entorno adecuadas y sigue las instrucciones de Render para el despliegue.
 
 # Uso del Cliente
 
-El archivo client/client.js contiene un ejemplo de cómo consumir la API usando axios.
+El archivo client.js contiene un ejemplo de cómo consumir la API usando axios.
 
 ```javaScript
 
