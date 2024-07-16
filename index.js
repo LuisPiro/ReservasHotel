@@ -12,10 +12,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const urlBase = process.env.URL_BASE || '/api';
 
-const corsOptions = {
-  origin: 'https://reservashotel-nul0.onrender.com',
-};
-
 // Configurar CORS
 app.use(cors({
   origin: 'http://localhost:3000', // Permitir solo desde localhost:3000
