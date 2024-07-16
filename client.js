@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('./index');
 
 const apiBaseUrl = 'https://reservashotel-nul0.onrender.com/';
 

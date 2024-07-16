@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const axios = require('axios');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const routes = require('./routes/routes');
@@ -14,8 +15,8 @@ const urlBase = process.env.URL_BASE || '/api';
 
 // Configurar CORS
 app.use(cors({
-  origin: 'https://localhost:3000', // Permitir solo desde localhost:3000
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir solo métodos GET y POST
+  origin: 'http://localhost:3000', // Permitir solo desde localhost:3000
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir metodos utilizados en el proyecto
   allowedHeaders: ['Content-Type'], // Permitir solo el header Content-Type
 }));
 
@@ -33,3 +34,5 @@ app.use(urlBase, routes);
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+module.export = axios;
