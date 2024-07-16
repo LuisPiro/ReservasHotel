@@ -12,8 +12,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 const urlBase = process.env.URL_BASE || '/api';
 
+const corsOptions = {
+  origin: 'https://reservashotel-nul0.onrender.com',
+};
+
 // Configurar CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Middleware para parsear JSON
 app.use(express.json());
