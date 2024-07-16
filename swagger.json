@@ -1,195 +1,149 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Hotel Reservation API",
-      "version": "1.0.0",
-      "description": "API for managing hotel reservations"
-    },
-    "servers": [
-      {
-        "url": "localhost:3000/api"
-      }
-    ],
-    "paths": {
-      "/reservations": {
-        "get": {
-          "summary": "Get all reservations",
-          "responses": {
-            "200": {
-              "description": "List of reservations",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Reservation"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "summary": "Create a new reservation",
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Reservation"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Reservation created successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Reservation"
-                  }
-                }
-              }
-            }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Hotel Reservations API",
+    "description": "API for managing hotel reservations"
+  },
+  "host": "reservashotel-nul0.onrender.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/reservations": {
+      "get": {
+        "summary": "Get all reservations",
+        "responses": {
+          "200": {
+            "description": "List of reservations"
           }
         }
       },
-      "/reservations/{id}": {
-        "get": {
-          "summary": "Get a reservation by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Reservation found",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Reservation"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "Reservation not found"
+      "post": {
+        "summary": "Create a new reservation",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Reservation object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reservation"
             }
           }
-        },
-        "put": {
-          "summary": "Update a reservation by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Reservation"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Reservation updated successfully",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Reservation"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "Reservation not found"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Delete a reservation by ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Reservation deleted successfully"
-            },
-            "404": {
-              "description": "Reservation not found"
-            }
+        ],
+        "responses": {
+          "201": {
+            "description": "Reservation created"
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "Reservation": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "example": 1
-            },
-            "arrivalDate": {
-              "type": "string",
-              "format": "date",
-              "example": "2024-06-16"
-            },
-            "departureDate": {
-              "type": "string",
-              "format": "date",
-              "example": "2024-06-20"
-            },
-            "nameHotel": {
-              "type": "string",
-              "example": "Hotel Templarios"
-            },
-            "typeRoom": {
-              "type": "string",
-              "example": "Double"
-            },
-            "passengers": {
-              "type": "integer",
-              "example": 2
-            },
-            "name": {
-              "type": "string",
-              "example": "John Doe"
-            },
-            "mail": {
-              "type": "string",
-              "format": "email",
-              "example": "john.doe@example.com"
-            },
-            "paymentStatus": {
-              "type": "string",
-              "example": "Paid"
+    "/reservations/{id}": {
+      "get": {
+        "summary": "Get a reservation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation details"
+          },
+          "404": {
+            "description": "Reservation not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a reservation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Reservation object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reservation"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation updated"
+          },
+          "404": {
+            "description": "Reservation not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a reservation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reservation deleted"
+          },
+          "404": {
+            "description": "Reservation not found"
           }
         }
       }
     }
+  },
+  "definitions": {
+    "Reservation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "arrivalDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "departureDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "nameHotel": {
+          "type": "string"
+        },
+        "typeRoom": {
+          "type": "string"
+        },
+        "passengers": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mail": {
+          "type": "string",
+          "format": "email"
+        },
+        "paymentStatus": {
+          "type": "string"
+        }
+      }
+    }
   }
+}
