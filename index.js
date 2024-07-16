@@ -17,7 +17,12 @@ const corsOptions = {
 };
 
 // Configurar CORS
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'http://localhost:3000', // Permitir solo desde localhost:3000
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir solo métodos GET y POST
+  allowedHeaders: ['Content-Type'], // Permitir solo el header Content-Type
+}));
+
 
 // Middleware
 app.use(express.json());
