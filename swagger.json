@@ -5,7 +5,7 @@
     "title": "Hotel Reservations API",
     "description": "API for managing hotel reservations"
   },
-  "host": "https://reservashotel-nul0.onrender.com",
+  "host": "reservashotel-nul0.onrender.com",
   "basePath": "/api",
   "schemes": [
     "https"
