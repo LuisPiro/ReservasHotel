@@ -7,7 +7,7 @@
     },
     "servers": [
       {
-        "url": "http://localHost:3000/api"
+        "url": "https://reservashotel-nul0.onrender.com"
       }
     ],
     "paths": {
