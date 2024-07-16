@@ -1,15 +1,15 @@
 services:
-- type: web
-  name: hotel-reservation-api
-  runtime: node
-  repo: https://github.com/LuisPiro/ReservasHotel
-  plan: free
-  envVars:
-  - key: URL_BASE
-    sync: false
-  - key: https://reservashotel-nul0.onrender.com
-    sync: false
-  region: oregon
-  buildCommand: npm install
-  startCommand: npm start nodemon
+  - type: web
+    name: hotel-reservation-api
+    runtime: node
+    repo: https://github.com/LuisPiro/ReservasHotel
+    plan: free
+    envVars:
+      - key: URL_BASE
+        value: "https://reservashotel-nul0.onrender.com"
+      - key: PORT
+        value: "10000"
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
 version: "1"
