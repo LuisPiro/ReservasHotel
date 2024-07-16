@@ -1,6 +1,15 @@
 class User {
     constructor() {
-      this.users = [];
+      this.reservations = [
+        {
+          id: 1,
+          created: "2024-06-15",
+          password: "ksdfh234",
+          name: "Jack Ripper",
+          mail: "jackRipper@example.com",
+          ContractStatus: "ok"
+        }
+      ];
     }
   
     getAllUsers() {

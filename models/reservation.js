@@ -1,49 +1,72 @@
 class Reservation {
-    constructor() {
-      this.reservations = [
-        {
-          id: 1,
-          arrivalDate: "2024-06-16",
-          departureDate: "2024-06-20",
-          nameHotel: "Hotel Templarios",
-          typeRoom: "Double",
-          passengers: 2,
-          name: "John Doe",
-          mail: "john.doe@example.com",
-          paymentStatus: "Paid"
-        }
-      ];
-    }
-  
-    getAllReservations() {
-      return this.reservations;
-    }
-  
-    createReservation(reservation) {
-      this.reservations.push(reservation);
+  constructor(id, arrivalDate, departureDate, nameHotel, typeRoom, passengers, name, mail, paymentStatus) {
+    this.id = id;
+    this.arrivalDate = arrivalDate;
+    this.departureDate = departureDate;
+    this.nameHotel = nameHotel;
+    this.typeRoom = typeRoom;
+    this.passengers = passengers;
+    this.name = name;
+    this.mail = mail;
+    this.paymentStatus = paymentStatus;
+  }
+
+  static getAll() {
+    return reservations;
+  }
+
+  static getById(id) {
+    return reservations.find(reservation => reservation.id === id);
+  }
+
+  static create(data) {
+    const newReservation = new Reservation(
+      reservations.length + 1,
+      data.arrivalDate,
+      data.departureDate,
+      data.nameHotel,
+      data.typeRoom,
+      data.passengers,
+      data.name,
+      data.mail,
+      data.paymentStatus
+    );
+    reservations.push(newReservation);
+    return newReservation;
+  }
+
+  static update(id, data) {
+    const reservation = reservations.find(reservation => reservation.id === id);
+    if (reservation) {
+      Object.assign(reservation, data);
       return reservation;
     }
-  
-    getReservationById(id) {
-      return this.reservations.find(r => r.id === id);
-    }
-  
-    updateReservation(id, updatedReservation) {
-      const index = this.reservations.findIndex(r => r.id === id);
-      if (index !== -1) {
-        this.reservations[index] = { ...this.reservations[index], ...updatedReservation };
-        return this.reservations[index];
-      }
-      return null;
-    }
-  
-    deleteReservation(id) {
-      const index = this.reservations.findIndex(r => r.id === id);
-      if (index !== -1) {
-        return this.reservations.splice(index, 1)[0];
-      }
-      return null;
-    }
+    return null;
   }
-  
-  module.exports = Reservation;
+
+  static delete(id) {
+    const index = reservations.findIndex(reservation => reservation.id === id);
+    if (index !== -1) {
+      reservations.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+}
+
+const reservations = [];
+
+const exampleReservation = new Reservation(
+  1,
+  "2024-06-16",
+  "2024-06-20",
+  "Hotel Templarios",
+  "Double",
+  2,
+  "John Doe",
+  "john.doe@example.com",
+  "Paid"
+);
+reservations.push(exampleReservation);
+
+module.exports = Reservation;
