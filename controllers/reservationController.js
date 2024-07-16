@@ -1,4 +1,4 @@
-const Reservation = require('../models/reservation');
+const Reservation = require('../models/reservations');
 
 exports.getAllReservations = (req, res) => {
   res.json(Reservation.getAll());
