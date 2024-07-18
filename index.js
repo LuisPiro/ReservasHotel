@@ -15,7 +15,7 @@ const urlBase = process.env.URL_BASE || '/api';
 
 // Configurar CORS
 app.use(cors({
-  origin: 'http://localhost:3000', // Permitir solo desde localhost:3000
+  origin: '*', // Permitir todos los dominios
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir metodos utilizados en el proyecto
   allowedHeaders: ['Content-Type'], // Permitir solo el header Content-Type
 }));
@@ -23,6 +23,10 @@ app.use(cors({
 
 // Middleware
 app.use(express.json());
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Ups! Algo salió mal');
+});
 
 // Configurar Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -35,4 +39,4 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-module.export = axios;
+module.exports = axios;
