@@ -11,28 +11,19 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 10000;
-const apiBaseUrl = 'https://hotel-reservation-api-y0u2.onrender.com/';
-
-// Hacer la solicitud GET para obtener todas las reservas
-axios.get(`${apiBaseUrl}api/reservations`)
-  .then(response => {
-    console.log('All Reservations:', response.data);
-  })
-  .catch(error => {
-    console.error('Error fetching reservations:', error);
-  });
+const urlBase = process.env.URL_BASE || '/api';
 
 // Configurar CORS
 app.use(cors({
-  origin: '*', // Permitir todos los dominios
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir metodos utilizados en el proyecto
-  allowedHeaders: ['Content-Type'], // Permitir solo el header Content-Type
+  origin: 'https://hotel-reservation-api-y0u2.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
 }));
 
 
 // Middleware
 app.use(express.json());
-app.use((err, req, res, next) => {
+app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res.status(500).send('Ups! Algo salió mal');
 });
