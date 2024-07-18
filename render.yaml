@@ -6,7 +6,7 @@ services:
     plan: free
     envVars:
       - key: URL_BASE
-        value: "https://reservashotel-nul0.onrender.com"
+        value: "https://hotel-reservation-api-y0u2.onrender.com"
       - key: PORT
         value: "10000"
     region: oregon

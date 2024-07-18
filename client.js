@@ -1,6 +1,6 @@
 const axios = require('./index');
 
-const apiBaseUrl = 'https://reservashotel-nul0.onrender.com/';
+const apiBaseUrl = 'https://hotel-reservation-api-y0u2.onrender.com/';
 
 // Hacer la solicitud GET para obtener todas las reservas
 axios.get(`${apiBaseUrl}api/reservations`)
