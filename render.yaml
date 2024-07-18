@@ -5,7 +5,7 @@ services:
     repo: https://github.com/LuisPiro/ReservasHotel
     plan: free
     envVars:
-      - key: URL_BASE
+      - key: api
         value: "https://reservashotel-nul0.onrender.com/"
       - key: PORT
         value: "10000"
