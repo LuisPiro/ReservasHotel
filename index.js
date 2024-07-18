@@ -11,7 +11,16 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 10000;
-const urlBase = process.env.URL_BASE || '/api';
+const apiBaseUrl = 'https://hotel-reservation-api-y0u2.onrender.com/';
+
+// Hacer la solicitud GET para obtener todas las reservas
+axios.get(`${apiBaseUrl}api/reservations`)
+  .then(response => {
+    console.log('All Reservations:', response.data);
+  })
+  .catch(error => {
+    console.error('Error fetching reservations:', error);
+  });
 
 // Configurar CORS
 app.use(cors({
