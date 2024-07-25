@@ -13,7 +13,47 @@
   "paths": {
     "/reservations": {
       "get": {
-        "summary": "Get all reservations",
+        "summary": "Get all reservations or search reservations",
+        "parameters": [
+          {
+            "name": "nameHotel",
+            "in": "query",
+            "type": "string",
+            "description": "Filter reservations by hotel name"
+          },
+          {
+            "name": "arrivalDate",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "description": "Filter reservations by arrival date"
+          },
+          {
+            "name": "departureDate",
+            "in": "query",
+            "type": "string",
+            "format": "date",
+            "description": "Filter reservations by departure date"
+          },
+          {
+            "name": "typeRoom",
+            "in": "query",
+            "type": "string",
+            "description": "Filter reservations by room type"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "type": "string",
+            "description": "Filter reservations by payment status"
+          },
+          {
+            "name": "passengers",
+            "in": "query",
+            "type": "integer",
+            "description": "Filter reservations by number of passengers"
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of reservations"

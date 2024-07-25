@@ -3,8 +3,35 @@ const router = express.Router();
 const Reservation = require('../models/reservations');
 
 // Obtener todas las reservas
-router.get('/', (_req, res) => {
-  res.json(Reservation.getAll());
+router.get('/', (req, res) => {
+  const { nameHotel, arrivalDate, departureDate, typeRoom, paymentStatus, passengers } = req.query;
+  let reservations = Reservation.getAll();
+
+  if (nameHotel) {
+    reservations = reservations.filter(reservation => reservation.nameHotel === nameHotel);
+  }
+
+  if (arrivalDate) {
+    reservations = reservations.filter(reservation => reservation.arrivalDate === arrivalDate);
+  }
+
+  if (departureDate) {
+    reservations = reservations.filter(reservation => reservation.departureDate === departureDate);
+  }
+
+  if (typeRoom) {
+    reservations = reservations.filter(reservation => reservation.typeRoom === typeRoom);
+  }
+
+  if (paymentStatus) {
+    reservations = reservations.filter(reservation => reservation.paymentStatus === paymentStatus);
+  }
+
+  if (passengers) {
+    reservations = reservations.filter(reservation => reservation.passengers === parseInt(passengers, 10));
+  }
+
+  res.json(reservations);
 });
 
 // Obtener una reserva por ID

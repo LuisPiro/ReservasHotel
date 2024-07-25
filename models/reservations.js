@@ -1,8 +1,8 @@
 class Reservation {
   constructor(id, arrivalDate, departureDate, nameHotel, typeRoom, passengers, name, mail, paymentStatus) {
     this.id = id;
-    this.arrivalDate = arrivalDate;
-    this.departureDate = departureDate;
+    this.arrivalDate = this.formatDate(arrivalDate);
+    this.departureDate = this.formatDate(departureDate);
     this.nameHotel = nameHotel;
     this.typeRoom = typeRoom;
     this.passengers = passengers;
@@ -11,12 +11,41 @@ class Reservation {
     this.paymentStatus = paymentStatus;
   }
 
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
   static getAll() {
-    return reservations;
+    return reservations.map(reservation => new Reservation(
+      reservation.id,
+      reservation.arrivalDate,
+      reservation.departureDate,
+      reservation.nameHotel,
+      reservation.typeRoom,
+      reservation.passengers,
+      reservation.name,
+      reservation.mail,
+      reservation.paymentStatus
+    ));
   }
 
   static getById(id) {
-    return reservations.find(reservation => reservation.id === id);
+    const reservation = reservations.find(reservation => reservation.id === id);
+    return reservation ? new Reservation(
+      reservation.id,
+      reservation.arrivalDate,
+      reservation.departureDate,
+      reservation.nameHotel,
+      reservation.typeRoom,
+      reservation.passengers,
+      reservation.name,
+      reservation.mail,
+      reservation.paymentStatus
+    ) : null;
   }
 
   static create(data) {
@@ -38,8 +67,22 @@ class Reservation {
   static update(id, data) {
     const reservation = reservations.find(reservation => reservation.id === id);
     if (reservation) {
-      Object.assign(reservation, data);
-      return reservation;
+      Object.assign(reservation, {
+        ...data,
+        arrivalDate: this.prototype.formatDate(data.arrivalDate),
+        departureDate: this.prototype.formatDate(data.departureDate),
+      });
+      return new Reservation(
+        reservation.id,
+        reservation.arrivalDate,
+        reservation.departureDate,
+        reservation.nameHotel,
+        reservation.typeRoom,
+        reservation.passengers,
+        reservation.name,
+        reservation.mail,
+        reservation.paymentStatus
+      );
     }
     return null;
   }
